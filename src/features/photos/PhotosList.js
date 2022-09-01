@@ -1,49 +1,30 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Spinner } from '../../components/Spinner';
 import {selectAllPhotos,fetchPhotos} from './photosSlice'
-
-const PhotoExcerpt = ({photo})=> {
-    return(
-        <div>
-            <img src={photo.urls.small} alt= "photos"/>
-        </div>
-    )
-}
 
 export const PhotosList = () => {
     const dispatch = useDispatch()
     const photos = useSelector(selectAllPhotos)
     
-    const photoStatus = useSelector(state => state.photos.status)
-    const error = useSelector(state => state.photos.error)
-
-
+    console.log(photos)
+    
     useEffect(() => {
-        if(photoStatus === "idle"){
-            dispatch(fetchPhotos())
-        }
-    }, [photoStatus, dispatch])
 
-    let image;
+    dispatch(fetchPhotos())
 
-    if(photoStatus === "loading"){
-        image = <Spinner text= "Loading..."/>
-    
-    }else if (photoStatus === "succeeded"){
-        image = photos.map(photo => (
-            <PhotoExcerpt key={photo.id} photo={photo}/>
-        ))
-    }else if (photoStatus === "failed"){
-        image = <div>{error}</div>
-    }
+    }, [dispatch])
+        
+        
     return (
-        <section>
-            <h2>Fotos</h2>
-            {image}
-        </section>
-    )
-    
+      <div>
+        {photos.map(photo =>(
+            <div key={photo.id}>
+                <img src={photo.urls.small} alt= {photo} />
 
-    
+            </div>
+        ))}
+
+      </div>
+    )
+   
 }
