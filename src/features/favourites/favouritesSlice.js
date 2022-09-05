@@ -1,15 +1,42 @@
 import { createSlice } from "@reduxjs/toolkit"; 
 
-const initialState = [
-    {id:"1", title: "photo1"},
-    {id: "2", title: "photo2"}
-]
+const saveToStorage = photos =>{
+    localStorage.setItem("favouritePhotos", JSON.stringify(photos));
+}
 
-const favouriteSlice = createSlice({
-    name: "favouritePhoto",
-    initialState,
-    reducers:{}
+function getFromStorage(){
+    const fromStorage = localStorage.getItem("favouritesPhoto");
+    return fromStorage ? JSON.parse(fromStorage):[];
+}
 
-})
+const favouritesSlice = createSlice({
+    name: "favouritesPhoto",
+    initialState: {
+        photos: getFromStorage()
+    },
+    reducers:{
+        addFavourite:(state, action) =>{
+            state.photos.push(action.payload);
+            saveToStorage(state.photos)
+        },
+    
+        deleteFavourite:(state, action) => {
+            state.photos = state.photos.filter(photo => photo.id !== action.payload.id);
+            saveToStorage(state.photos)
 
-export default favouriteSlice.reducer
+        },
+        updateFavourite:(state,action)=>{
+            const{id, description} = action.payload
+            const existingFavourite = state.photos.find(photo => photo.id === id)
+            if(existingFavourite){
+                existingFavourite.description= description
+            }
+        }
+    }
+});
+
+export const {addFavourite, deleteFavourite, updateFavourite} = favouritesSlice.actions;
+
+export default favouritesSlice.reducer
+
+export const favouritesPhotos = state => state.favourites.photos
