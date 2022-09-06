@@ -20,7 +20,7 @@ export const PhotosList = ({favourite}) => {
     const photos = useSelector(selectAllPhotos)
     const [query, setquery ] = useState('')
     
-    //console.log(photos)
+
     
 
     useEffect(() => {
@@ -28,29 +28,29 @@ export const PhotosList = ({favourite}) => {
     }, [dispatch,query])
            
 
-    // let date = new Date();
-    // let day = `${date.getDate()}`.padStart(2, "0");
-    // let month = `${date.getMonth() + 1}`.padStart(2, "0");
-    // let year = date.getFullYear();
-    // date = `${day}-${month}-${year}`;
+    let date = new Date();
+    let day = `${date.getDate()}`.padStart(2, "0");
+    let month = `${date.getMonth() + 1}`.padStart(2, "0");
+    let year = date.getFullYear();
+    date = `${day}-${month}-${year}`;
 
-    // const addFav = (id) => {
-    //   if(favourite.find((photo)=>photo.id === id))return; 
-    // const newFavourite = photos.find((photo)=> photo.id ===id)
+    const addFav = (id) => {
+      if(favourite.find((photo)=>photo.id === id))return; 
+    const addPhoto = photos.find((photo)=> photo.id ===id)
     
-    // let data = {
-    //   id: newFavourite.id,
-    //   description: newFavourite.description,
-    //   width: newFavourite.width,
-    //   height: newFavourite.height,
-    //   full: newFavourite.urls.full,
-    //   thumb: newFavourite.urls.thumb,
-    //   likes: newFavourite.likes,
-    //   setDate: date,
-    // };
+    let data = {
+      id: addPhoto.id,
+      description: addPhoto.description,
+      width: addPhoto.width,
+      height: addPhoto.height,
+      full: addPhoto.urls.full,
+      thumb: addPhoto.urls.thumb,
+      likes: addPhoto.likes,
+      setDate: date,
+    };
   
-    // dispatch(addFavourite(data));
-    // }
+    dispatch(addFavourite(data));
+    }
   
    
 
@@ -102,7 +102,7 @@ export const PhotosList = ({favourite}) => {
                     <NavLink to="/favourites" style={{ textDecoration: "none" }}>
                       <IconButton
                         sx={{ color: "white" }}
-                        onClick={() => dispatch(addFavourite(photo))}>
+                        onClick={() => addFav(photo.id)}>
                         <AddAPhotoIcon sx={{width:'100%'}}/>
                       </IconButton>
                     </NavLink>
