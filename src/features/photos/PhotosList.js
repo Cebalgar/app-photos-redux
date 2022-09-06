@@ -15,7 +15,7 @@ import { addFavourite } from '../favourites/favouritesSlice';
 
 
 
-export const PhotosList = () => {
+export const PhotosList = ({favourite}) => {
     const dispatch = useDispatch()
     const photos = useSelector(selectAllPhotos)
     const [query, setquery ] = useState('')
@@ -27,7 +27,33 @@ export const PhotosList = () => {
     dispatch(fetchPhotos(query))
     }, [dispatch,query])
            
+
+    // let date = new Date();
+    // let day = `${date.getDate()}`.padStart(2, "0");
+    // let month = `${date.getMonth() + 1}`.padStart(2, "0");
+    // let year = date.getFullYear();
+    // date = `${day}-${month}-${year}`;
+
+    // const addFav = (id) => {
+    //   if(favourite.find((photo)=>photo.id === id))return; 
+    // const newFavourite = photos.find((photo)=> photo.id ===id)
     
+    // let data = {
+    //   id: newFavourite.id,
+    //   description: newFavourite.description,
+    //   width: newFavourite.width,
+    //   height: newFavourite.height,
+    //   full: newFavourite.urls.full,
+    //   thumb: newFavourite.urls.thumb,
+    //   likes: newFavourite.likes,
+    //   setDate: date,
+    // };
+  
+    // dispatch(addFavourite(data));
+    // }
+  
+   
+
     return (
     <>
 

@@ -16,8 +16,9 @@ const favouritesSlice = createSlice({
     },
     reducers:{
         addFavourite:(state, action) =>{
-            state.photos.push(action.payload);
+            state.photos.push({...action.payload, date_importe: new Date().getTime()});
             saveToStorage(state.photos)
+        
         },
     
         deleteFavourite:(state, action) => {
@@ -31,9 +32,13 @@ const favouritesSlice = createSlice({
             if(existingFavourite){
                 existingFavourite.description= description
             }
+            saveToStorage(state.photos)
         }
+     
     }
+    
 });
+//localStorage.clear()
 
 export const {addFavourite, deleteFavourite, updateFavourite} = favouritesSlice.actions;
 
