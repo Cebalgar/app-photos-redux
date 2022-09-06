@@ -4,7 +4,7 @@ import axios from "axios";
 
 const URL= 'https://api.unsplash.com/search/photos';
 const urlRandom = "https://api.unsplash.com/photos/random";
-const apiKey= '2Hkr1F0A60ayJuuh9K-i4ED8oyQg_4PaP8c9CO3_HNk';
+const apiKey= 'fap9RiTBIkGKtr3KREf858iXt2RSjFG4NKm6XVdz0Tk';
 
 
 export const fetchPhotos = createAsyncThunk

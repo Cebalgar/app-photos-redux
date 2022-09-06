@@ -23,8 +23,6 @@ export function PhotosFavourites(){
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("");
  
-  
-
   const favourite = useSelector(favouritesPhotos);
   const dispatch = useDispatch();
 
@@ -32,7 +30,7 @@ export function PhotosFavourites(){
     setFavPhotos(favourite)
   },[favourite])
 
-    //console.log(favourite)
+    console.log(favourite)
 
   const handleSearch = (e) =>{
     setSearch(e.target.value);
@@ -124,7 +122,7 @@ export function PhotosFavourites(){
       {favPhotos && favPhotos.length && searchDescription.map((photo)=> (
       <ImageListItem key={photo.id}>
       <img 
-      src= {`${photo.urls.thumb}?w=164&h=164&fit=crop&auto=format`} 
+      src= {`${photo.thumb}?w=164&h=164&fit=crop&auto=format`} 
       alt={photo.description}
       loading="lazy"
       />
@@ -142,7 +140,7 @@ export function PhotosFavourites(){
             </IconButton>  
             <IconButton
               sx={{ color: "white"}}
-              onClick={()=>downloadImage(photo.urls.full)}>
+              onClick={()=>downloadImage(photo.full)}>
             <DownloadIcon sx={{width: '100%'}}/> 
             </IconButton>
            

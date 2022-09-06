@@ -15,6 +15,7 @@ import { addFavourite } from '../favourites/favouritesSlice';
 
 
 
+
 export const PhotosList = ({favourite}) => {
     const dispatch = useDispatch()
     const photos = useSelector(selectAllPhotos)
@@ -35,9 +36,8 @@ export const PhotosList = ({favourite}) => {
     date = `${day}-${month}-${year}`;
 
     const addFav = (id) => {
-      if(favourite.find((photo)=>photo.id === id))return; 
     const addPhoto = photos.find((photo)=> photo.id ===id)
-    
+ 
     let data = {
       id: addPhoto.id,
       description: addPhoto.description,
@@ -52,8 +52,7 @@ export const PhotosList = ({favourite}) => {
     dispatch(addFavourite(data));
     }
   
-   
-
+  
     return (
     <>
 

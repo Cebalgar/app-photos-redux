@@ -16,7 +16,7 @@ const favouritesSlice = createSlice({
     },
     reducers:{
         addFavourite:(state, action) =>{
-            state.photos.push({...action.payload, date_importe: new Date().getTime()});
+            state.photos.push(action.payload);
             saveToStorage(state.photos)
         
         },
