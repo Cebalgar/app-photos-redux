@@ -10,11 +10,11 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <Router>
-  <Provider store={store}>
-    <App />
-  </Provider>
-  </Router>
+    <Router basename= {process.env.PUBLIC_URL}>
+      <Provider store={store}>   
+         <App /> 
+      </Provider>
+    </Router>
   </React.StrictMode>
 );
 
