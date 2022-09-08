@@ -36,15 +36,7 @@ export function PhotosFavourites() {
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-  const searchDescription = favourite.filter((photo) => {
-    if (search === "") {
-      return photo;
-    } else {
-      return photo.description
-        ? photo.description.toLowerCase().includes(search.toLowerCase())
-        : "";
-    }
-  });
+  
 
   const dataUrl = (url) => {
     return fetch(url)
@@ -68,10 +60,19 @@ export function PhotosFavourites() {
 
   useEffect(() => {
     const filterFav = favourite.filter((photo) => (photo = photo.id));
-    const orderFavPhotos = [...filterFav];
+    const searchDescription = filterFav.filter((photo) => {
+      if (search === "") {
+        return photo;
+      } else {
+        return photo.description
+          ? photo.description.toLowerCase().includes(search.toLowerCase())
+          : "";
+      }
+    });
+    const orderFavPhotos = [...searchDescription];
     switch (order) {
       case "date":
-        orderFavPhotos.sort((a, b) => a.date - b.date);
+        orderFavPhotos.sort((a, b) => a.setDate - b.setDate);
         break;
       case "width":
         orderFavPhotos.sort((a, b) => a.width - b.width);
@@ -85,9 +86,10 @@ export function PhotosFavourites() {
       default:
         break;
     }
+    console.log(orderFavPhotos)
     setFavPhotos(orderFavPhotos);
-  }, [favourite, order]);
-
+  }, [favourite, order,search]);
+ 
   const open = () => setOpenModal(true);
   const handleDescription = (photo) => {
     open();
@@ -137,7 +139,7 @@ export function PhotosFavourites() {
         >
           {favPhotos &&
             favPhotos.length &&
-            searchDescription.map((photo) => (
+            favPhotos.map((photo) => (
               <ImageListItem key={photo.id}>
                 <img
                   src={`${photo.thumb}?w=164&h=164&fit=crop&auto=format`}

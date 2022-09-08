@@ -62,13 +62,18 @@ export default function ModalFavourites({
           >
             <CancelIcon />
           </IconButton>
-          <Box sx={{ marginTop: 1, display: "flex" }}>
+          <Box sx={{ marginTop: 3, marginBottom:2, display: "flex" }}>
             <Typography sx={{ marginLeft: 3 }}>
-              <p>width: {editPhoto.width}</p>
-              <p>height: {editPhoto.height}</p>
-              <p>Likes: {editPhoto.likes}</p>
-              <p>Date: {editPhoto.setDate}</p>
-              <p>Description: {editPhoto.description}</p>
+             <span>width:</span> {editPhoto.width} 
+             <br/>
+              <span>height:</span> {editPhoto.height}
+              <br/>
+              <span>Likes:</span> {editPhoto.likes}
+              <br/>
+              <span>Date:</span> {editPhoto.setDate}
+              <br/>
+              <span>Description:</span> {editPhoto.description}
+              <br/>
             </Typography>
           </Box>
           <Box>
