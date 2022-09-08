@@ -33,9 +33,6 @@ export function PhotosFavourites() {
     setFavPhotos(favourite);
   }, [favourite]);
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
   
 
   const dataUrl = (url) => {
@@ -57,6 +54,10 @@ export function PhotosFavourites() {
     a.click();
     document.body.removeChild(a);
   }
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   useEffect(() => {
     const filterFav = favourite.filter((photo) => (photo = photo.id));
@@ -86,7 +87,7 @@ export function PhotosFavourites() {
       default:
         break;
     }
-    console.log(orderFavPhotos)
+    //console.log(orderFavPhotos)
     setFavPhotos(orderFavPhotos);
   }, [favourite, order,search]);
  
@@ -138,7 +139,7 @@ export function PhotosFavourites() {
           rowHeight={164}
         >
           {favPhotos &&
-            favPhotos.length &&
+          
             favPhotos.map((photo) => (
               <ImageListItem key={photo.id}>
                 <img
