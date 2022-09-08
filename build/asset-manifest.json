@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/app-photos-redux/tree/master/static/css/main.964fdded.css",
+    "main.js": "/app-photos-redux/tree/master/static/js/main.50fa366e.js",
+    "static/js/787.eb6b098b.chunk.js": "/app-photos-redux/tree/master/static/js/787.eb6b098b.chunk.js",
+    "index.html": "/app-photos-redux/tree/master/index.html",
+    "main.964fdded.css.map": "/app-photos-redux/tree/master/static/css/main.964fdded.css.map",
+    "main.50fa366e.js.map": "/app-photos-redux/tree/master/static/js/main.50fa366e.js.map",
+    "787.eb6b098b.chunk.js.map": "/app-photos-redux/tree/master/static/js/787.eb6b098b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.964fdded.css",
+    "static/js/main.50fa366e.js"
+  ]
+}
