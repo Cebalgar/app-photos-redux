@@ -139,7 +139,6 @@ export function PhotosFavourites() {
           rowHeight={164}
         >
           {favPhotos &&
-          
             favPhotos.map((photo) => (
               <ImageListItem key={photo.id}>
                 <img

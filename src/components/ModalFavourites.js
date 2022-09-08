@@ -40,7 +40,7 @@ export default function ModalFavourites({
       dispatch(
         updateFavourite({ id: editPhoto.id, description: editDescription })
       );
-    } else {
+  
       setEditDescription("");
     }
   };

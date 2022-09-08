@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const URL = "https://api.unsplash.com/search/photos";
-const urlRandom = "https://api.unsplash.com/photos/random";
-const apiKey = "xn3Ny0CNwg0faoHqdpaFHhopULtMTA4qdIugDjvGgH8";
+const urlRandom = "https://api.unsplash.com/photos";
+const apiKey = "fap9RiTBIkGKtr3KREf858iXt2RSjFG4NKm6XVdz0Tk";
 
 export const fetchPhotos = createAsyncThunk(
   "photos/fetchPhotos",
